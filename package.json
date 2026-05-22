@@ -1,0 +1,23 @@
+{
+  "name": "signals.ts",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --max-warnings 0 --cache --cache-strategy content ."
+  },
+  "devDependencies": {
+    "@gribbet/eslint-config": "github:gribbet/eslint-config",
+    "eslint": "^10.4.0",
+    "typescript": "^6.0.3"
+  }
+}
