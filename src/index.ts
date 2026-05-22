@@ -1,7 +1,5 @@
 export const SIGNAL = Symbol.for("signals.ts/signal");
 
-console.log("Signals.ts");
-
 export type Signal<T> = (() => T) & { [SIGNAL]: true };
 
 export type MaybeSignal<T> = T | Signal<T>;
@@ -13,7 +11,6 @@ export type Properties<T> = {
 export type Effect = {
   run: () => void;
   cleanups: (() => void)[];
-  owner?: Effect;
 };
 
 let currentOwner: Effect | undefined = undefined;
@@ -24,7 +21,7 @@ export const signal = <T>(value: T): [Signal<T>, (v: T) => void] => {
 
   const getter = (() => {
     const listener = currentListener;
-    if (listener) {
+    if (listener && !subscribers.has(listener)) {
       subscribers.add(listener);
       onCleanup(() => subscribers.delete(listener));
     }
@@ -67,7 +64,6 @@ export const effect = (f: () => void | (() => void)) => {
 
   const effect = {
     run,
-    owner: currentOwner,
     cleanups: [],
   } satisfies Effect;
 
@@ -98,7 +94,6 @@ export const root = <T>(f: (dispose: () => void) => T): T => {
   const root = {
     run: () => {},
     cleanups: [],
-    owner: currentOwner,
   } satisfies Effect;
 
   const previousOwner = currentOwner;
