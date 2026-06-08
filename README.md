@@ -5,13 +5,13 @@ Tiny fine-grained reactive signals for TypeScript.
 ## Install
 
 ```bash
-npm i signal.ts
+npm i @gribbet/signal.ts
 ```
 
 ## Usage
 
 ```ts
-import { signal, effect } from "signal.ts";
+import { signal, effect } from "@gribbet/signal.ts";
 
 const [count, setCount] = signal(0);
 effect(() => console.log(count()));

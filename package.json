@@ -1,5 +1,5 @@
 {
-  "name": "signal.ts",
+  "name": "@gribbet/signal.ts",
   "version": "1.0.0",
   "description": "Tiny fine-grained reactive signals for TypeScript.",
   "license": "MIT",
