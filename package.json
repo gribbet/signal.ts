@@ -1,10 +1,25 @@
 {
-  "name": "signals.ts",
-  "private": true,
+  "name": "signal.ts",
+  "version": "1.0.0",
+  "description": "Tiny fine-grained reactive signals for TypeScript.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gribbet/signal.ts.git"
+  },
+  "homepage": "https://github.com/gribbet/signal.ts#readme",
+  "bugs": {
+    "url": "https://github.com/gribbet/signal.ts/issues"
+  },
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -13,7 +28,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "lint": "eslint --max-warnings 0 --cache --cache-strategy content ."
+    "lint": "eslint --max-warnings 0 --cache --cache-strategy content .",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@gribbet/eslint-config": "github:gribbet/eslint-config",

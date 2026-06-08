@@ -1,0 +1,23 @@
+# signal.ts
+
+Tiny fine-grained reactive signals for TypeScript.
+
+## Install
+
+```bash
+npm i signal.ts
+```
+
+## Usage
+
+```ts
+import { signal, effect } from "signal.ts";
+
+const [count, setCount] = signal(0);
+effect(() => console.log(count()));
+setCount(1);
+```
+
+## API
+
+`signal`, `effect`, `onCleanup`, `untrack`, `derived`, `root`, `resolve`, `map`
